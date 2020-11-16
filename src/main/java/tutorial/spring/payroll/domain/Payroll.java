@@ -15,7 +15,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Payroll {
-	private @Id @GeneratedValue Long id;
-	private Integer employeeId;
-	private Integer payAmount;
+    @Id
+    @GeneratedValue
+    private
+    Long id;
+    private Integer employeeId;
+    private Integer payAmount;
 }

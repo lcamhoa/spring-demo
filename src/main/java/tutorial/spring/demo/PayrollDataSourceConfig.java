@@ -19,39 +19,38 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @ConfigurationProperties("app.datasource.payroll")
-@EnableJpaRepositories(
-		basePackages = {"tutorial.spring.payroll.repository"},
-		entityManagerFactoryRef = PayrollDataSourceConfig.PAYROLL_ENTITY_MANAGER_FACTORY,
-		transactionManagerRef = PayrollDataSourceConfig.PAYROLL_TRANSACTION_MANAGER
-)
+@EnableJpaRepositories(basePackages = "tutorial.spring.payroll.repository",
+        entityManagerFactoryRef = PayrollDataSourceConfig.PAYROLL_ENTITY_MANAGER_FACTORY,
+        transactionManagerRef = PayrollDataSourceConfig.PAYROLL_TRANSACTION_MANAGER)
 public class PayrollDataSourceConfig extends HikariConfig {
-	
+
     public static final String MODEL_PACKAGE = "tutorial.spring.payroll.domain";
+    public static final String PAYROLL_ENTITY_MANAGER_FACTORY = "payrollEntityManagerFactory";
+    // Transaction manager for datasource
+    public static final String PAYROLL_TRANSACTION_MANAGER = "payrollTransationManager";
     static final String PAYROLL_DS = "payrollDS";
-    @Bean(name=PAYROLL_DS)
+
+    @Bean(name = PAYROLL_DS)
     public HikariDataSource pallrollDataSource() {
         return new HikariDataSource(this);
     }
-        
-    public static final String PAYROLL_ENTITY_MANAGER_FACTORY = "payrollEntityManagerFactory";
+
     @Bean(name = PAYROLL_ENTITY_MANAGER_FACTORY)
-    public LocalContainerEntityManagerFactoryBean payrollEntityManagerFactory(@Qualifier(PAYROLL_DS) final HikariDataSource dataSource) {
-    	return new LocalContainerEntityManagerFactoryBean() {{
+    public LocalContainerEntityManagerFactoryBean payrollEntityManagerFactory(
+            @Qualifier(PAYROLL_DS) final HikariDataSource dataSource) {
+        return new LocalContainerEntityManagerFactoryBean() {{
             setDataSource(dataSource);
             setPersistenceProviderClass(HibernatePersistenceProvider.class);
             setPersistenceUnitName("Payroll");
             setPackagesToScan(MODEL_PACKAGE);
             setJpaProperties(JPA_PROPERTIES);
         }};
-   }
-    
-    // Transaction manager for datasource
-    public static final String PAYROLL_TRANSACTION_MANAGER = "payrollTransationManager";
-    @Bean(name=PAYROLL_TRANSACTION_MANAGER)
+    }
+
+    @Bean(name = PAYROLL_TRANSACTION_MANAGER)
     public PlatformTransactionManager payrollTransactionManager(
-            final @Qualifier(PAYROLL_ENTITY_MANAGER_FACTORY) EntityManagerFactory payrollEntityManagerFactory) {
+            @Qualifier(PAYROLL_ENTITY_MANAGER_FACTORY) final EntityManagerFactory payrollEntityManagerFactory) {
         return new JpaTransactionManager(payrollEntityManagerFactory);
     }
-    
-    
+
 }

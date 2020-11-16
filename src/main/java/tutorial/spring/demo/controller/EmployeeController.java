@@ -14,12 +14,12 @@ import tutorial.spring.demo.repository.EmployeeRepository;
 @AllArgsConstructor
 public class EmployeeController {
 
-	@Autowired
-	private final EmployeeRepository employeeRepository;
-	
-	@GetMapping("/employees")
-	List<Employee> getAll() {
-		return employeeRepository.findAll();
-	}
-	
+    @Autowired
+    private final EmployeeRepository employeeRepository;
+
+    @GetMapping("/employees")
+    List<Employee> getAll() {
+        return employeeRepository.findAll();
+    }
+
 }

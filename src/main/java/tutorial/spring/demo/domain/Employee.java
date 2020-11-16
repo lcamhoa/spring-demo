@@ -16,10 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-	
-	private @Id @GeneratedValue Long id;
-	
-	private @Column(nullable = false) String name;
-	
-	private String role;
+
+    @Id
+    @GeneratedValue
+    private
+    Long id;
+
+    @Column(nullable = false)
+    private
+    String name;
+
+    private String role;
 }

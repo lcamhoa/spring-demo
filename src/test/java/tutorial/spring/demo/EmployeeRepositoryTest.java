@@ -15,31 +15,31 @@ import tutorial.spring.demo.repository.EmployeeRepository;
 @DataJpaTest
 public class EmployeeRepositoryTest {
 
-	@Autowired
-	private TestEntityManager entityManager;
+    @Autowired
+    private TestEntityManager entityManager;
 
-	@Autowired
-	private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
-	@Test
-	@DisplayName("Find Employee By Name")
-	void shouldFindEmployeeByName() {
-		String name = "Alex";
-		// given
-		Employee alex = Employee.builder().name(name).role("Employee").build();
-		employeeRepository.save(alex);
-		entityManager.flush();
+    @Test
+    @DisplayName("Find Employee By Name")
+    void shouldFindEmployeeByName() {
+        final String name = "Alex";
+        // given
+        final Employee alex = Employee.builder().name(name).role("Employee").build();
+        employeeRepository.save(alex);
+        entityManager.flush();
 
-		// when
-		Employee found = employeeRepository.findByName(alex.getName()).stream().findFirst().get();
+        // when
+        final Employee found = employeeRepository.findByName(alex.getName()).stream().findFirst().get();
 
-		// then
-		assertAll("found", () -> {
-			assertEquals(name, found.getName());
-			assertEquals(1L, found.getId());
-			assertEquals("Employee", found.getRole());
-		});
+        // then
+        assertAll("found", () -> {
+            assertEquals(name, found.getName());
+            assertEquals(1L, found.getId());
+            assertEquals("Employee", found.getRole());
+        });
 
-	}
+    }
 
 }

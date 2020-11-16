@@ -10,7 +10,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import tutorial.spring.demo.domain.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-	List<Employee> findAll(Sort sort);
-	Page<Employee> findAll(Pageable pageable);
-	List<Employee> findByName(String name);
+    @Override
+    List<Employee> findAll(Sort sort);
+
+    @Override
+    Page<Employee> findAll(Pageable pageable);
+
+    List<Employee> findByName(String name);
 }

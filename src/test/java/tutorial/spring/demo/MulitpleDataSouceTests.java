@@ -12,20 +12,20 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @SpringBootTest
 public class MulitpleDataSouceTests {
-	
-	@Autowired
-	@Qualifier(EmployeeDataSourceConfig.EMPLOYEE_DS)
-	private HikariDataSource employeeDataSource;
-	
-	@Autowired
-	@Qualifier(PayrollDataSourceConfig.PAYROLL_DS)
-	private HikariDataSource payrollDataSource;
-	
-	@Test
-	@DisplayName("Initiaize 2 DataSources")
-	void shouldMulitpleDataSources() {
-		assertNotNull(employeeDataSource, "Employee DS should exits");
-		assertNotNull(payrollDataSource, "Payroll DS should exits");
-	}
-	
+
+    @Autowired
+    @Qualifier(EmployeeDataSourceConfig.EMPLOYEE_DS)
+    private HikariDataSource employeeDataSource;
+
+    @Autowired
+    @Qualifier(PayrollDataSourceConfig.PAYROLL_DS)
+    private HikariDataSource payrollDataSource;
+
+    @Test
+    @DisplayName("Initiaize 2 DataSources")
+    void shouldMulitpleDataSources() {
+        assertNotNull(employeeDataSource, "Employee DS should exits");
+        assertNotNull(payrollDataSource, "Payroll DS should exits");
+    }
+
 }

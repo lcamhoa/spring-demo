@@ -1,0 +1,12 @@
+app:
+  datasource:
+    employee:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbcUrl: jdbc:mysql://localhost:3306/demo_product
+      username: root
+      password: rootpw
+    payroll:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbcUrl: jdbc:mysql://localhost:3306/payments_product
+      username: root
+      password: rootpw
