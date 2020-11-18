@@ -3,9 +3,9 @@ pipeline{
         label "master"
     }
     stages{
-        stage("A"){
+        stage("Build"){
             steps{
-                echo "========executing A========"
+                sh "./gradlew clean build"
             }
             post{
                 always{
