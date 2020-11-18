@@ -1,13 +1,12 @@
 package tutorial.spring.demo;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Tag;
 
-@SpringBootTest
+@Tag(DemoApplicationTests.TAG_INTEGRATION_TEST)
+public
 class DemoApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+    public static final String TAG_INTEGRATION_TEST = "IntegrationTest";
+    public static final String TAG_UNIT_TEST = "UnitTest";
 
 }

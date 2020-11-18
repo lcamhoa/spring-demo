@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import tutorial.spring.demo.domain.Employee;
 import tutorial.spring.demo.repository.EmployeeRepository;
 
+@Tag(DemoApplicationTests.TAG_INTEGRATION_TEST)
 @DataJpaTest
 public class EmployeeRepositoryTest {
 

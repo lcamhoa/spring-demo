@@ -25,7 +25,9 @@ import com.zaxxer.hikari.HikariDataSource;
 public class EmployeeDataSourceConfig extends HikariConfig {
 
     public static final String MODEL_PACKAGE = "tutorial.spring.demo.domain";
+
     public static final String EMPLOYEE_ENTITY_MANAGER_FACTORY = "employeeEntityManagerFactory";
+
     // Transaction manager for each datasource
     public static final String EMPLOYEE_TRANSACTION_MANAGER = "employeeTransactionManager";
     static final String EMPLOYEE_DS = "employeeDataSouce";
