@@ -5,6 +5,7 @@ pipeline{
     stages{
         stage("Build"){
             steps{
+                sh "source /etc/profile.d/gradle.sh"
                 sh "./gradlew clean build"
             }
             post{
