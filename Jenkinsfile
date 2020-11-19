@@ -5,7 +5,7 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "export PATH=/opt/gradle/bin:${PATH}"
+                sh "export PATH=/opt/gradle/bin:${PATH}"
                 sh "./gradlew clean build"
             }
             post{
